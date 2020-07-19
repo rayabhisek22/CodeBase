@@ -4,33 +4,23 @@ using namespace std;
 
 int V,E;
 vector<int> G[MAX];
+bool visited[MAX];
 
 void dfs(int root)
 {
-    stack<int> s;
-    bool visited[V];
+    //Code to do with the search element
+    cout<<root<<" ";
 
-    s.push(root);
-    visited[root] = 1;
+    visited[root]=true;
 
-    while(!s.empty())
+    for(int child:G[root])
     {
-        int node=s.top();
-
-        //Code to do with the search element
-        cout<<node<<" ";
-
-        s.pop();
-        visited[node]=true;
-
-        for(int child:G[node])
+        if(!visited[child])
         {
-            if(!visited[child])
-            {
-                s.push(child);
-            }
+            dfs(child);
         }
     }
+
 }
 
 int main()
@@ -63,3 +53,4 @@ int main()
 7 8
 8 9
 */
+
